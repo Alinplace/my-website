@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Alinplace</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Alinplace</div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#">Смартфондар</a></li>
+        <li><a href="#">Аксессуарлар</a></li>
+        <li><a href="#">Жеңілдіктер</a></li>
+    </ul>
+</nav>
+
+  <div class="card-container">
+    <div class="product-card" id="mainCard">
+      <div class="badge">Alinplace Choice</div>
+      <div class="product-img">
+        <img src="img.jpg" alt="iphone16pro" class="product-img-file">
+      </div>
+      <h2 class="product-title">Iphone 16 Pro Max</h2>
+      <p class="price-tag"><span id="displayPrice">150 000</span> тг</p>
+
+      <div class="controls">
+        <button class="btn-minus" onclick="changeQty(-1)">>-<</button>
+        <span id="qty">1</span>
+        <button class="btn-plus" onclick="changeQty(1)">>+<</button>
+      </div>
+
+      <button class="buy-btn" onclick="orderNow()">Себетке салу</button>
+      <p id="promo-msg"></p>
+    </div>
+  </div>
+
+  <script>
+    let count = 1;
+    const basePrice = 150000;
+
+    function changeQty(amount) {
+      count += amount;
+
+      if (count < 1) count = 1;
+
+      updateUI();
+    }
+
+    function updateUI() {
+      let total = count * basePrice;
+      let msg = "";
+
+      if (count >= 3) {
+        total = total * 0.95;
+        msg = "Сен VIP женылдык алдын (15%)! 🚀"
+      }
+
+      document.getElementById('qty').innerText = count;
+      document.getElementById('displayPrice').innerText = total.toLocaleString();
+      document.getElementById('promo-msg').innerText = msg;
+    }
+
+    function orderNow() {
+      alert('Ракмет, бро! Alinplace аркылы' + count + 'тауарга тапсырыс кабылданды.')
+    }
+    
+
+  </script>
+</body>
+</html>
